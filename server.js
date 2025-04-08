@@ -8,6 +8,12 @@ const port = 3000;
 app.use(cors());
 app.use(express.json());
 
+app.use(cors({
+  origin: 'http://localhost:8100', // Permitir solo solicitudes de localhost:8100
+  methods: ['GET', 'POST'], // Métodos permitidos
+  allowedHeaders: ['Content-Type', 'Authorization'], // Headers permitidos
+}));
+
 // LOGIN
 app.post('/login', async (req, res) => {
   try {
